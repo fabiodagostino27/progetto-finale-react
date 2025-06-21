@@ -21,13 +21,13 @@ export default function Header() {
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link d-flex align-items-center" href="#">
+                            <NavLink className="nav-link d-flex align-items-center" to={"/videogames"}>
                                 <IoGameController />
                                 <span className="fs-5 ps-1 d-inline d-lg-none">Videogames</span>
                             </NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link d-flex align-items-center" href="#">
+                            <NavLink className="nav-link d-flex align-items-center" to={"/platforms"}>
                                 <MdOutlineLaptopChromebook />
                                 <span className="fs-5 ps-1 d-inline d-lg-none">Platforms</span>
                             </NavLink>
