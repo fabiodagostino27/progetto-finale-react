@@ -1,6 +1,7 @@
 import { RiHome2Fill } from "react-icons/ri";
-import { IoLogoGameControllerA } from "react-icons/io";
+import { IoGameController } from "react-icons/io5";
 import { MdOutlineLaptopChromebook } from "react-icons/md";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
 
@@ -12,24 +13,24 @@ export default function Header() {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav fs-3 ms-auto">
+                    <ul class="navbar-nav fs-3 ms-auto gap-3">
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="/">
+                            <NavLink class="nav-link d-flex align-items-center" to={"/"}>
                                 <RiHome2Fill />
-                                <span className="fs-5 ps-1">Home</span>
-                            </a>
+                                <span className="fs-5 ps-1 d-inline d-lg-none">Home</span>
+                            </NavLink>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="#">
-                                <IoLogoGameControllerA />
-                                <span className="fs-5 ps-1">Videogames</span>
-                            </a>
+                            <NavLink class="nav-link d-flex align-items-center" href="#">
+                                <IoGameController />
+                                <span className="fs-5 ps-1 d-inline d-lg-none">Videogames</span>
+                            </NavLink>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="#">
+                            <NavLink class="nav-link d-flex align-items-center" href="#">
                                 <MdOutlineLaptopChromebook />
-                                <span className="fs-5 ps-1">Platforms</span>
-                            </a>
+                                <span className="fs-5 ps-1 d-inline d-lg-none">Platforms</span>
+                            </NavLink>
                         </li>
                     </ul>
                 </div>
