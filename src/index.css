@@ -6,3 +6,7 @@ nav a {
 nav a:hover {
     color: #ffffff;
 }
+
+.aspect-ratio {
+    aspect-ratio: 3/4;
+}

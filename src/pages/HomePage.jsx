@@ -1,7 +1,6 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import VideogameCard from "../components/VideogameCard";
-import GlobalContext from "../contexts/GlobalContext";
 import Loader from "../components/Loader";
 
 export default function HomePage() {
