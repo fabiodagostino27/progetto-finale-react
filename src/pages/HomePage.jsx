@@ -1,21 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import VideogameCard from "../components/VideogameCard";
+import GlobalContext from "../contexts/GlobalContext";
+import Loader from "../components/Loader";
 
 export default function HomePage() {
     const [videogames, setVideogames] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
+    const [isLoading, setIsLoading] = useState(false);
+    
     useEffect(() => {
+        setIsLoading(true);
         axios.get("http://localhost:8080/api/videogames/random")
             .then((res) => {
                 setVideogames(res.data);
-                setIsLoading(false);
+                setIsLoading(false)
             })
             .catch((err) => {
                 console.error("Error fetching videogames:", err);
-                setIsLoading(false);
-            });
+                setIsLoading(false)
+            })
     }, []);
 
     return (
@@ -24,17 +27,13 @@ export default function HomePage() {
             <h2 className="text-center my-3">Here are some exciting new games!</h2>
             <div className="m-auto d-flex justify-content-center row">
                 {
-                    isLoading ? (
-                        <div class="spinner-border text-light" role="status">
-                            <span class="visually-hidden">Loading...</span>
-                        </div>
-                    ) : (
-                        videogames.map(v => {
-                            return (
-                                <VideogameCard key={v.id} videogame={v} />
-                            )
-                        })
-                    )
+                    isLoading ? (<Loader />)
+                    : videogames.map(v => {
+                        return (
+                            <VideogameCard key={v.id} videogame={v} />
+                        )
+                    })
+
                 }
             </div>
         </>

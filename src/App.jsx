@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import SingleVideogamePage from "./pages/SingleVideogamePage";
 
 function App() {
+
   return (
     <>
       <BrowserRouter>
