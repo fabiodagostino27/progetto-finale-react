@@ -4,12 +4,14 @@ import Footer from "../components/Footer";
 
 export default function DefaultLayout() {
     return (
-        <>
+        <div>
             <Header />
-            <main className="container my-4">
-                <Outlet />
+            <main className="bg-secondary">
+                <div className="container py-4 text-white">
+                    <Outlet />
+                </div>
             </main>
             <Footer />
-        </>
+        </div>
     )
 }
