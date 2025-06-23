@@ -1,39 +1,38 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import VideogameCardHome from "../components/VideogameCardHome";
 import Loader from "../components/Loader";
+import VideogameCardIndex from "../components/VideogameCardIndex";
 
-export default function HomePage() {
+export default function VideogamesPage() {
     const url = import.meta.env.VITE_INDEX_ROUTE;
     const [videogames, setVideogames] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    
+
     useEffect(() => {
         setIsLoading(true);
-        axios.get(url + "/random")
+        axios.get(url)
             .then((res) => {
                 setVideogames(res.data);
-                setIsLoading(false)
+                setIsLoading(false);
             })
             .catch((err) => {
                 console.error("Error fetching videogames:", err);
-                setIsLoading(false)
+                setIsLoading(false);
             })
     }, []);
 
+    console.log(videogames)
     return (
         <>
-            <h1 className="fs-1 fw-bold text-center">Welcome to SlowGaming!</h1>
-            <h2 className="text-center my-3">Here are some exciting new games!</h2>
-            <div className="m-auto d-flex justify-content-center row">
+            <h1 className="text-center">Explore a collection of amazing videogames</h1>
+            <div className="row">
                 {
                     isLoading ? (<Loader />)
                     : videogames.map(v => {
                         return (
-                            <VideogameCardHome key={v.id} videogame={v} />
+                            <VideogameCardIndex key={v.id} videogame={v} />
                         )
                     })
-
                 }
             </div>
         </>

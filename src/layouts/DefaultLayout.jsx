@@ -6,8 +6,8 @@ export default function DefaultLayout() {
     return (
         <div>
             <Header />
-            <main className="bg-secondary">
-                <div className="container py-4 text-white">
+            <main className="bg-secondary-subtle">
+                <div className="container py-4">
                     <Outlet />
                 </div>
             </main>

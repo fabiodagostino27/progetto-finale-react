@@ -1,14 +1,14 @@
 import { RiHome2Fill } from "react-icons/ri";
 import { IoGameController } from "react-icons/io5";
 import { MdOutlineLaptopChromebook } from "react-icons/md";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export default function Header() {
 
     return (
         <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div className="container-fluid">
-                <span className="navbar-brand mb-0 h1 text-center"><span className="fs-2 text-center">Slow</span><br /><span className="fs-5">Gaming</span></span>
+                <Link to={"/"} className="navbar-brand mb-0 h1 text-center"><span className="fs-2 text-center">Slow</span><br /><span className="fs-5">Gaming</span></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
