@@ -5,7 +5,7 @@ import VideogameCardIndex from "../components/VideogameCardIndex";
 import { FaSearch } from "react-icons/fa";
 
 export default function VideogamesPage() {
-    const url = import.meta.env.VITE_INDEX_ROUTE;
+    const url = import.meta.env.VITE_VIDEOGAMES_ROUTE;
     const [videogames, setVideogames] = useState([]);
     const [query, setQuery] = useState("");
     const [isLoading, setIsLoading] = useState(false);

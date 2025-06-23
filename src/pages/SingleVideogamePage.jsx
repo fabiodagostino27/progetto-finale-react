@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader";
 import { IoArrowBack } from "react-icons/io5";
 
 export default function SingleVideogamePage() {
-    const url = import.meta.env.VITE_INDEX_ROUTE;
+    const url = import.meta.env.VITE_VIDEOGAMES_ROUTE;
     const navigate = useNavigate();
     const { id } = useParams();
     const [videogame, setVideogame] = useState(null);
@@ -80,24 +80,25 @@ export default function SingleVideogamePage() {
                                                         <table className="table table-dark table-striped table-hover caption-top">
                                                             <tbody>
                                                                 {videogame.platforms.map((platform) => (
-                                                                    <tr key={platform.id}>
+                                                                    <tr className="hover-cursor-pointer" key={platform.id} onClick={() => navigate(`/platforms/${platform.id}`)}>
                                                                         <td className="text-center align-middle">
                                                                             {platform.iconUrl && (
-                                                                                <img
-                                                                                    src={platform.iconUrl}
-                                                                                    alt={platform.name}
-                                                                                    style={{
-                                                                                        width: '2.5em',
-                                                                                        height: '2.5em',
-                                                                                        filter: 'invert(1)'
-                                                                                    }}
-                                                                                    className="img-fluid"
-                                                                                />
+                                                                                    <img
+                                                                                        src={platform.iconUrl}
+                                                                                        alt={platform.name}
+                                                                                        style={{
+                                                                                            width: '2.5em',
+                                                                                            height: '2.5em',
+                                                                                            filter: 'invert(1)'
+                                                                                        }}
+                                                                                        className="img-fluid"
+                                                                                    />
                                                                             )}
                                                                         </td>
                                                                         <td className="align-middle">{platform.name}</td>
                                                                         <td className="align-middle">{platform.manufacturer}</td>
                                                                     </tr>
+
                                                                 ))}
                                                             </tbody>
                                                         </table>

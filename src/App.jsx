@@ -3,6 +3,7 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./pages/HomePage";
 import SingleVideogamePage from "./pages/SingleVideogamePage";
 import VideogamesPage from "./pages/VideogamesPage";
+import PlatformsPage from "./pages/PlatformsPage";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" Component={HomePage} />
             <Route path="/videogames" Component={VideogamesPage} />
             <Route path="/videogames/:id" Component={SingleVideogamePage} />
+            <Route path="/platforms" Component={PlatformsPage} />
           </Route>
         </Routes>
       </BrowserRouter>
