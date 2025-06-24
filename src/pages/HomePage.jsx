@@ -5,7 +5,7 @@ import Loader from "../components/Loader";
 import { Link } from "react-router-dom";
 
 export default function HomePage() {
-    const url = import.meta.env.VITE_INDEX_ROUTE;
+    const url = import.meta.env.VITE_VIDEOGAMES_ROUTE;
     const [videogames, setVideogames] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -22,6 +22,10 @@ export default function HomePage() {
             })
     }, []);
 
+    if (videogames.length === 0) {
+        return <Loader />
+    }
+
     return (
         <>
             <h1 className="fs-1 fw-bold text-center">Welcome to SlowGaming!</h1>
@@ -34,7 +38,6 @@ export default function HomePage() {
                                 <VideogameCardHome key={v.id} videogame={v} />
                             )
                         })
-
                 }
                 <div className="text-center mt-3">
                     <Link to={"/videogames"} className="btn btn-dark">See More</Link>

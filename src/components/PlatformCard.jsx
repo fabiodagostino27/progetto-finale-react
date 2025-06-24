@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
+
 export default function PlatformCard({ platform }) {
-    const { iconUrl, name, manufacturer } = platform;
+    const { id, iconUrl, name, manufacturer } = platform;
 
     return (
-        <div className="card shadow-sm my-3 col-6 col-md-4 col-lg-3" style={{ width: '18rem' }}>
+        <Link to={`/platforms/${id}`} className="card my-3 col-6 col-md-4 col-lg-3 card-transition text-decoration-none" style={{ width: '18rem' }}>
             <img
                 src={iconUrl}
                 className="card-img-top p-3 mx-auto d-block"
@@ -15,6 +17,6 @@ export default function PlatformCard({ platform }) {
                     Manufacturer: {manufacturer}
                 </p>
             </div>
-        </div>
+        </Link>
     );
 };

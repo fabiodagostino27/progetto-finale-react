@@ -22,7 +22,7 @@ export default function SingleVideogamePage() {
                 console.error("Error fetching videogames:", err);
                 setIsLoading(false)
             })
-    }, [])
+    }, [id])
 
 
     if (!videogame) {
