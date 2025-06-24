@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader";
 import { IoArrowBack } from "react-icons/io5";
+import DlcCard from "../components/DlcCard";
 
 export default function SingleVideogamePage() {
     const url = import.meta.env.VITE_VIDEOGAMES_ROUTE;
@@ -126,6 +127,17 @@ export default function SingleVideogamePage() {
                                     </div>
                                 </div>
                             </div>
+
+                            {videogame.dlcs && videogame.dlcs.length > 0 && (
+                                <div className="row justify-content-center">
+                                    <h3 className="text-center mt-3">Dlcs available for this game: </h3>
+                                    {
+                                        videogame.dlcs.map(d => {
+                                            return <DlcCard key={d.id} dlc={d} />
+                                        })
+                                    }
+                                </div>
+                            )}
                         </div>
                     )
             }
