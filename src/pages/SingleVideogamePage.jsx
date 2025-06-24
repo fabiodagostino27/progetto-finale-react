@@ -9,7 +9,7 @@ export default function SingleVideogamePage() {
     const navigate = useNavigate();
     const { id } = useParams();
     const [videogame, setVideogame] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -20,7 +20,10 @@ export default function SingleVideogamePage() {
             })
             .catch((err) => {
                 console.error("Error fetching videogames:", err);
-                setIsLoading(false)
+                if (err.response && err.response.status === 404) {
+                    navigate("/404");
+                }
+                setIsLoading(false);
             })
     }, [id])
 
@@ -83,16 +86,16 @@ export default function SingleVideogamePage() {
                                                                     <tr className="hover-cursor-pointer" key={platform.id} onClick={() => navigate(`/platforms/${platform.id}`)}>
                                                                         <td className="text-center align-middle">
                                                                             {platform.iconUrl && (
-                                                                                    <img
-                                                                                        src={platform.iconUrl}
-                                                                                        alt={platform.name}
-                                                                                        style={{
-                                                                                            width: '2.5em',
-                                                                                            height: '2.5em',
-                                                                                            filter: 'invert(1)'
-                                                                                        }}
-                                                                                        className="img-fluid"
-                                                                                    />
+                                                                                <img
+                                                                                    src={platform.iconUrl}
+                                                                                    alt={platform.name}
+                                                                                    style={{
+                                                                                        width: '2.5em',
+                                                                                        height: '2.5em',
+                                                                                        filter: 'invert(1)'
+                                                                                    }}
+                                                                                    className="img-fluid"
+                                                                                />
                                                                             )}
                                                                         </td>
                                                                         <td className="align-middle">{platform.name}</td>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader";
 import VideogameCardIndex from "../components/VideogameCardIndex";
@@ -7,6 +7,7 @@ import VideogameCardIndex from "../components/VideogameCardIndex";
 export default function SinglePlatformPage() {
     const url = import.meta.env.VITE_PLATFORMS_ROUTE;
     const { id } = useParams();
+    const navigate = useNavigate();
     const [platform, setPlatform] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -19,17 +20,15 @@ export default function SinglePlatformPage() {
             })
             .catch((err) => {
                 console.error("Error fetching platform: " + err);
+                if (err.response && err.response.status === 404) {
+                    navigate("/404");
+                }
                 setIsLoading(false);
             })
     }, [id]);
 
     if (!platform) {
-        return (
-            <div className="text-center">
-                <h1>Whoops! Something went wrong!</h1>
-                <Link to={"/platforms"} className="btn btn-dark my-4">Platforms Page</Link>
-            </div>
-        );
+        return <Loader />;
     }
 
     return (
